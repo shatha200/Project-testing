@@ -1,7 +1,3 @@
-import os
-from os import listdir
-from os.path import isfile, join
-import player
 import pygame
 pygame.init()
 W,H=1000,800
@@ -11,7 +7,7 @@ FPS=60
 speed=5
 
 def get_bg():
-    img=pygame.image.load(join("Data/sprites/background/1.png"))
+    img=pygame.image.load("Data/sprites/background/2.png")
     _,_,width,height =img.get_rect()
     tiles=[]
 
@@ -21,24 +17,29 @@ def get_bg():
             tiles.append(P)
     return tiles,img
 
+
+        
+
+
 def draw(win,background,bg_image):
     for tile in background:
         win.blit(bg_image,tuple(tile))
-   
+    
     pygame.display.update()
-
 
 
 def main (win):
     run = True
     clock=pygame.time.Clock()
     background,bg_img=get_bg()
+    
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():  
             if event.type == pygame.QUIT:
              run = False 
         draw(win,background,bg_img)
+        
     pygame.quit() 
 
 main(win)
