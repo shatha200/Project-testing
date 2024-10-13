@@ -1,10 +1,19 @@
+import random
+import math
 import pygame
 pygame.init()
-W,H=1000,800
+
+W,H=800,800
 win = pygame.display.set_mode((W,H))
 pygame.display.set_caption("classic game")
 FPS=60
-speed=5
+vel=5
+new_icon=pygame.image.load("Data\icon.png")
+pygame.display.set_icon(new_icon)
+
+
+
+
 
 def get_bg():
     img=pygame.image.load("Data/sprites/background/2.png")
@@ -16,11 +25,6 @@ def get_bg():
             P=(i*width,j*height)
             tiles.append(P)
     return tiles,img
-
-
-        
-
-
 def draw(win,background,bg_image):
     for tile in background:
         win.blit(bg_image,tuple(tile))
@@ -28,11 +32,14 @@ def draw(win,background,bg_image):
     pygame.display.update()
 
 
+
+
+
 def main (win):
     run = True
     clock=pygame.time.Clock()
     background,bg_img=get_bg()
-    
+   
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():  
